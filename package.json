@@ -1,0 +1,38 @@
+{
+  "name": "jaga-serverless-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@bugsnag/js": "^6.0.0",
+    "is_js": "^0.9.0",
+    "lambda-log": "^2.1.0",
+    "middy": "^0.22.1"
+  },
+  "devDependencies": {
+    "eslint": "5.3.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "serverless-offline": "^4.6.0",
+    "serverless-prune-plugin": "^1.3.2",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.29.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start:local:dev": "serverless offline start --region ap-southeast-1 --stage dev --apiKey jagame"
+  },
+  "author": "Wei Kang Chia",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:coverage"
+    }
+  }
+}

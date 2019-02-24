@@ -1,0 +1,41 @@
+service: serviceName
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-1
+  profile: jaga-me
+  memorySize: 128
+  logRetentionInDays: 180
+  environment: ${file(./serverless.env.json):${opt:stage, self:provider.stage}}
+
+plugins:
+  - serverless-prune-plugin
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  prune:
+    automatic: true
+    number: 7
+  webpack:
+    includeModules: true
+
+package:
+  individually: true
+  exclude:
+    - coverage/**
+    - tests/**
+    - .eslintrc
+    - .eslintignore
+    - serverless.example.env.json
+
+functions:
+  helloWorld:
+    handler: modules/sample/endpoints/helloWorld.handler
+    events:
+      - http:
+          path: v1/helloWorld
+          method: get
+          cors: true
