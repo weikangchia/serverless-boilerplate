@@ -64,6 +64,7 @@ function clearTimers() {
 
 class BugsnagLambdaWrapper {
   static handler(originalHandler) {
+    console.log(process.env);
     const bugsnagOptions = {
       apiKey: BUGSNAG.API_KEY,
       appType: 'web_server',
