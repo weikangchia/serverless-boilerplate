@@ -4,7 +4,7 @@ const handlerWrapper = require('../../../shared/utils/handlerWrapper');
 const responseUtil = require('../../../shared/utils/responseUtil');
 
 module.exports.handler = handlerWrapper(async (event) => {
-  log.info(process.env.ENVIRONMENT);
+  console.log(process.env);
   const response = responseUtil.createResponse({
     data: 'hello world',
   });
