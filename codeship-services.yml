@@ -1,2 +1,3 @@
 aws-serverless-deployment:
   image: weikangchia/aws-serverless-build
+  cached: true
