@@ -2,5 +2,10 @@
   tag: "test-codeshipPro"
   service: aws-serverless-deployment
   steps:
-  - command: echo "hello world"
+  - command: echo "test-codeshipPro"
   - command: serverless --version
+- type: serial
+  tag: "test-codeshipPro2"
+  service: aws-serverless-deployment
+  steps:
+  - command: echo "test-codeshipPro2"
