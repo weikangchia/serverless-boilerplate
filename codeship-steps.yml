@@ -1,0 +1,6 @@
+- type: serial
+  tag: "test-codeshipPro"
+  service: aws-serverless-deployment
+  steps:
+  - command: echo "hello world"
+  - command: serverless --version
