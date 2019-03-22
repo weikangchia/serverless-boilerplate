@@ -11,7 +11,7 @@
   - name: configure_aws_secret_access_key
     command: aws configure --profile jaga-me set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 
-- type: serial
+- type: manual
   tag: ^(master|test-codeshipPro)$
   service: aws-serverless-deployment
   steps:
