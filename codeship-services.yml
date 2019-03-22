@@ -1,6 +1,5 @@
 aws-serverless-deployment:
-  build:
-    dockerfile: Dockerfile
+  image: weikangchia/aws-serverless-build
   volumes:
     - .:/root/
   encrypted_env_file: env.encrypted
