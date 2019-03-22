@@ -1,11 +1,27 @@
-- type: serial
-  tag: "test-codeshipPro"
+- type: parallel
+  tag: ^(master|develop|test-codeshipPro)$
   service: aws-serverless-deployment
   steps:
-  - command: echo hello1
-  - command: serverless --version
+  - name: install_dependencies
+    command: yarn install
+  - name: update_serverless_env
+    command: sh ./update_env.sh
+  - name: configure_aws_access_key_id
+    command: aws configure --profile jaga-me set aws_access_key_id $AWS_ACCESS_KEY_ID
+  - name: configure_aws_secret_access_key
+    command: aws configure --profile jaga-me set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+
 - type: serial
-  tag: "test-codeshipPro2"
+  tag: ^(master|test-codeshipPro)$
   service: aws-serverless-deployment
   steps:
-  - command: echo hello2
+  - name: deploy_prod
+    command: serverless deploy --stage prod
+
+- type: serial
+  tag: develop
+  service: aws-serverless-deployment
+  steps:
+  - name: deploy_dev
+    command: serverless deploy --stage dev
+    

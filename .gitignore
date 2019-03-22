@@ -13,3 +13,7 @@ serverless.env.json
 
 # serverless-webpack
 .webpack
+
+# codeship
+codeship.aes
+env
